@@ -26,9 +26,15 @@ PFont f;
 void setup() {
   size(800, 300);
   background(c_very_dark);
-  targetMidi1 =   "0000000000000000"; // These need to be 16 long to work with the other parts
-  targetMidi2 =  "1000101000001000"; // of the code. You can change their size, but would have
-  targetMidi3 =   "0001111111100010"; // adjsut some other parameters
+// New
+  targetMidi1 =  "1010101010101010"; 
+  targetMidi2 =  "0000100000001000"; 
+  targetMidi3 =  "1000000010000000";
+  
+// Original
+  // targetMidi1 =   "0000000000000000"; // These need to be 16 long to work with the other parts
+  // targetMidi2 =  "1000101000001000"; // of the code. You can change their size, but would have
+  // targetMidi3 =   "0001111111100010"; // adjsut some other parameters
   String target = targetMidi1 + targetMidi2 + targetMidi3;
   MidiBus.list(); 
   myBus = new MidiBus(this, -1, 1);
@@ -85,6 +91,9 @@ void drawScreen(){
   //rect(10+beat*28.5,height/5+50,24,5); // these are the dashes that keep time
   //rect(10+beat*28.5,2.5*height/5+50,24,5);
   //rect(10+beat*28.5,4*height/5+50,24,5);
+  
+  textAlign(CENTER);
+  text("Number of Generations: " + count, width/2,60);
   
   for (int i = 0; i < 16; i++){ // set the number of times to update the GA between beats
     if(int(population.fittest.charAt(i))==49){
